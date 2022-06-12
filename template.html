@@ -103,7 +103,14 @@ body{
 </body>
 <script>
     const year = new Date().getFullYear();
-const myDate = new Date('Nov 21, 2022 00:00:00');
+    
+    const params = new URLSearchParams(document.location.search);
+    const month = params.get("month");
+    const day = params.get("days");
+    const year = params.get("year");
+    
+// const myDate = new Date('Nov 21, 2022 00:00:00');
+    const myDate = new Date(`${month} ${day}, ${year} 00:00:00`);
 console.log(myDate);
 
 // countdown
@@ -114,7 +121,7 @@ let timer = setInterval(function() {
 
   // get the difference
   const diff = myDate - today;
-
+ 
   // math
   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
   let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -127,10 +134,7 @@ let timer = setInterval(function() {
   document.getElementById("minutes").innerHTML=minutes
   document.getElementById("seconds").innerHTML=seconds
 
-const params = new URLSearchParams(document.location.search);
-const month = params.get("month");
-const day = params.get("days");
-const year = params.get("year");
+
 
 console.info(month, day); //show C
 console.info(year); //show 1
